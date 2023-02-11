@@ -20,7 +20,7 @@ class Weather:
 def getLatLon(cityName, stateCode, countryCode, APIKey):
     #Calling API, and saving it into a valid JSON object
     ApiResponse = requests.get(
-        f'http://api.openweathermap.org/geo/1.0/direct?q={cityName},{stateCode},{countryCode}&appid={APIKey}&units=metric'
+        f'http://api.openweathermap.org/geo/1.0/direct?q={cityName},{stateCode},{countryCode}&appid={APIKey}'
     ).json()
 
     locationData = ApiResponse[0]
@@ -32,7 +32,7 @@ def getLatLon(cityName, stateCode, countryCode, APIKey):
 #returns the current weather conditions for the lon and lat
 def getWeatherConditions(lat, lon, ApiKey):
     ApiResponse = requests.get(
-        f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={ApiKey}'
+        f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={ApiKey}&units=metric'
     ).json()
     
     WeatherData = Weather(
